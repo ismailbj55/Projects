@@ -1,0 +1,53 @@
+# An ATM Simulator Simple Project II
+
+print("Welcome to Meezan Bank ATM!")
+
+balance = 500000
+pin = "1234"
+
+while True:
+    usepin = input("Enter your pin ").strip()
+    if usepin == pin:
+        print("Please select your choice to operate")
+        print("1: Check Balance")
+        print("2: Withdraw Money")
+        print("3: Deposit Money")
+        print("4: Exit")
+        choice = int(input("Please enter your choice:"))
+        if choice == 1:
+            print(f"Your balance is {balance}")
+            again = input("Do you want to do another operation? (yes/no):").lower()
+            if again == "no":
+                break
+            else:
+                continue
+        elif choice == 2:
+            withdraw = int(input("Please enter amount to withdraw "))
+            if 0 < withdraw <= balance:
+                balance -= withdraw
+                print(f"An amount of {withdraw} has been withdrawn from your account! Your remaining balance is: {balance}")
+                again = input("Do you want to do another operation? (yes/no):").lower()
+                if again == "no":
+                    break
+                else:
+                    continue
+            else:
+                print("Insufficient Balance Operation! Please try again")
+        elif choice == 3:
+            deposit = int(input("Please enter amount to deposit"))
+            if deposit > 0:
+                balance += deposit
+                print(f" An amount of {deposit} has been deposited in your account! Your new balance is: {balance}")
+                again = input("Do you want to do another operation? (yes/no):").lower()
+                if again == "no":
+                    break
+                else:
+                    continue
+            else:
+                print("Invalid Amount! Please try again")
+        elif choice == 4:
+            print("Thank you for using this ATM! Goodbye")
+
+
+    else:
+        print("Please enter your correct password")
